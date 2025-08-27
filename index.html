@@ -219,9 +219,14 @@
             <div class="box">
                 <label for="in">ENTRADA</label>
                 <textarea id="in" placeholder="Ejemplo:&#10;L  L  L  LV  L  V  LV"></textarea>
-                <div class="hint">
-                    Pega tu quiniela y se generará automáticamente.
-                    <a class="sample" id="loadSample">Cargar ejemplo</a>
+                 <div class="hint">
+                    <div class="hint-left">
+                        <a class="sample" id="loadSample">Cargar ejemplo</a>
+                    </div>
+                    <div class="hint-right">
+                        <button class="copy-btn danger" id="clearBtn">🗑 Limpiar</button>
+                          
+                    </div>
                 </div>
             </div>
             <div class="box">
@@ -311,6 +316,14 @@
         });
         $themeSwitch.checked = true;
 
+         // Botón limpiar entrada
+        const $clearBtn = document.getElementById('clearBtn');
+        $clearBtn.addEventListener('click', () => {
+            $in.value = '';
+            $out.value = '';
+            $total.textContent = '0';
+        });
+        
         // Botón copiar
         $copyBtn.addEventListener('click', () => {
             if (!$out.value.trim()) return;
